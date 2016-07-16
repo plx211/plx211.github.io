@@ -1,0 +1,418 @@
+<div id='{{id}}' class='tab-pane fade'>
+  <div class='content-wrapper'>
+    <section class='content-header'>
+      <h1>{{name}}</h1>
+    </section>
+    <section class='content'>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="box-title">Plugin Information</div>
+            </div>
+            <div class="box-body">
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">Plugin size</span>
+                    <span class="info-box-number">{{plugin.data.raw.length}} <small>Byte</small></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-green"><i class="ion ion-ios-gear-outline"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">Plugin hash (MD5)</span>
+                    <span class="info-box-text"><strong>{{plugin.hash}}</strong></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-yellow"><i class="ion ion-ios-gear-outline"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">Amx version32 (uncompressed) size</span>
+                    <span class="info-box-number">{{plugin.version32.data.raw.length}} <small>Byte</small></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box">
+                  <span class="info-box-icon bg-red"><i class="ion ion-ios-gear-outline"></i></span>
+                  <div class="info-box-content">
+                    <span class="info-box-text">Amx version64 (uncompressed) size</span>
+                    <span class="info-box-text"><strong>Version64 is not supported yet</strong></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="box-title">Amxx Header</div>
+            </div>
+            <div class="box-body">
+              <dl class="dl-horizontal">
+                <dt>Magic</dt><dd>{{plugin.header.magic}}</dd>
+                <dt>Version</dt><dd>{{plugin.header.version}}</dd>
+                <dt>Sections</dt><dd>{{plugin.header.sections}}</dd>
+                <dt>Cellsize</dt><dd>{{plugin.header.cellsize}}</dd>
+                <dt>Disksize</dt><dd>{{plugin.header.disksize}}</dd>
+                <dt>Imagesize</dt><dd>{{plugin.header.imagesize}}</dd>
+                <dt>Memsize</dt><dd>{{plugin.header.memsize}}</dd>
+                <dt>Offs</dt><dd>{{plugin.header.offs}}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="box-title">Amx Version32 Header</div>
+            </div>
+            <div class="box-body">
+              <dl class="dl-horizontal">
+                <dt>Size</dt><dd>{{plugin.version32.header.size}}</dd>
+                <dt>Magic</dt><dd>{{plugin.version32.header.magic}}</dd>
+                <dt>File_version</dt><dd>{{plugin.version32.header.file_version}}</dd>
+                <dt>Amx_version</dt><dd>{{plugin.version32.header.amx_version}}</dd>
+                <dt>Flags</dt><dd>{{plugin.version32.header.flags}}</dd>
+                <dt>Defsize</dt><dd>{{plugin.version32.header.defsize}}</dd>
+                <dt>COD</dt><dd>{{plugin.version32.header.cod}}</dd>
+                <dt>DAT</dt><dd>{{plugin.version32.header.dat}}</dd>
+                <dt>HEA</dt><dd>{{plugin.version32.header.hea}}</dd>
+                <dt>STP</dt><dd>{{plugin.version32.header.stp}}</dd>
+                <dt>CIP</dt><dd>{{plugin.version32.header.cip}}</dd>
+                <dt>Publics</dt><dd>{{plugin.version32.header.publics}}</dd>
+                <dt>Natives</dt><dd>{{plugin.version32.header.natives}}</dd>
+                <dt>Libraries</dt><dd>{{plugin.version32.header.libraries}}</dd>
+                <dt>Pubvars</dt><dd>{{plugin.version32.header.pubvars}}</dd>
+                <dt>Tags</dt><dd>{{plugin.version32.header.tags}}</dd>
+                <dt>Nametable</dt><dd>{{plugin.version32.header.nametable}}</dd>
+                <dt>Overlays</dt><dd>{{plugin.version32.header.overlays}}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="box-title">Amx Version64 Header</div>
+            </div>
+            <div class="box-body">
+              <strong>Version64 is not supported yet</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="box-title">Publics Functions List</div>
+            </div>
+            <div class="box-body table-responsive no-padding">
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.publics.array.length}}</h3>
+                    <p>Function Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-green">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.publics.unknownCount}}</h3>
+                    <p>Unknown Function Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-yellow">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.publics.warningCount}}</h3>
+                    <p>Warning Function Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-red">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.publics.dangerCount}}</h3>
+                    <p>Danger Function Count</p>
+                  </div>
+                </div>
+              </div>
+              <table class="table table-bordered table-hover">
+                <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Nameofs</th>
+                  <th>Danger</th>
+                </tr>
+                {{#plugin.version32.table.publics.array}}
+                <tr class='{{danger}}'>
+                  <td>{{name}}</td>
+                  <td>{{address}}</td>
+                  <td>{{nameofs}}</td>
+                  <td>{{danger}}</td>
+                </tr>
+                {{/plugin.version32.table.publics.array}}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="box-title">Natives List</div>
+            </div>
+            <div class="box-body table-responsive no-padding">
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.natives.array.length}}</h3>
+                    <p>Natives Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-green">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.natives.unknownCount}}</h3>
+                    <p>Unknown Natives Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-yellow">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.natives.warningCount}}</h3>
+                    <p>Warning Natives Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-red">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.natives.dangerCount}}</h3>
+                    <p>Danger Natives Count</p>
+                  </div>
+                </div>
+              </div>
+              <table class="table table-bordered table-hover">
+                <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Nameofs</th>
+                  <th>Danger</th>
+                </tr>
+                {{#plugin.version32.table.natives.array}}
+                <tr class='{{danger}}'>
+                  <td>{{name}}</td>
+                  <td>{{address}}</td>
+                  <td>{{nameofs}}</td>
+                  <td>{{danger}}</td>
+                </tr>
+                {{/plugin.version32.table.natives.array}}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="box-title">Libraries List</div>
+            </div>
+            <div class="box-body table-responsive no-padding">
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.libraries.array.length}}</h3>
+                    <p>Libraries Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-green">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.libraries.unknownCount}}</h3>
+                    <p>Unknown Libraries Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-yellow">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.libraries.warningCount}}</h3>
+                    <p>Warning Libraries Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-red">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.libraries.dangerCount}}</h3>
+                    <p>Danger Libraries Count</p>
+                  </div>
+                </div>
+              </div>
+              <table class="table table-bordered table-hover">
+                <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Nameofs</th>
+                  <th>Danger</th>
+                </tr>
+                {{#plugin.version32.table.libraries.array}}
+                <tr class='{{danger}}'>
+                  <td>{{name}}</td>
+                  <td>{{address}}</td>
+                  <td>{{nameofs}}</td>
+                  <td>{{danger}}</td>
+                </tr>
+                {{/plugin.version32.table.libraries.array}}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="box-title">Pubvars List</div>
+            </div>
+            <div class="box-body table-responsive no-padding">
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.pubvars.array.length}}</h3>
+                    <p>Pubvars Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-green">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.pubvars.unknownCount}}</h3>
+                    <p>Unknown Pubvars Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-yellow">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.pubvars.warningCount}}</h3>
+                    <p>Warning Pubvars Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-red">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.pubvars.dangerCount}}</h3>
+                    <p>Danger Pubvars Count</p>
+                  </div>
+                </div>
+              </div>
+              <table class="table table-bordered table-hover">
+                <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Nameofs</th>
+                  <th>Danger</th>
+                </tr>
+                {{#plugin.version32.table.pubvars.array}}
+                <tr class='{{danger}}'>
+                  <td>{{name}}</td>
+                  <td>{{address}}</td>
+                  <td>{{nameofs}}</td>
+                  <td>{{danger}}</td>
+                </tr>
+                {{/plugin.version32.table.pubvars.array}}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="box-title">Tags List</div>
+            </div>
+            <div class="box-body table-responsive no-padding">
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-aqua">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.tags.array.length}}</h3>
+                    <p>Tags Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-green">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.tags.unknownCount}}</h3>
+                    <p>Unknown Tags Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-yellow">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.tags.warningCount}}</h3>
+                    <p>Warning Tags Count</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="small-box bg-red">
+                  <div class="inner">
+                    <h3>{{plugin.version32.table.tags.dangerCount}}</h3>
+                    <p>Danger Tags Count</p>
+                  </div>
+                </div>
+              </div>
+              <table class="table table-bordered table-hover">
+                <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Nameofs</th>
+                  <th>Danger</th>
+                </tr>
+                {{#plugin.version32.table.tags.array}}
+                <tr class='{{danger}}'>
+                  <td>{{name}}</td>
+                  <td>{{address}}</td>
+                  <td>{{nameofs}}</td>
+                  <td>{{danger}}</td>
+                </tr>
+                {{/plugin.version32.table.tags.array}}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

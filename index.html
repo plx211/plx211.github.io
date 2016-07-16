@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>APA | Amxx Plugin Analyzer</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+  <script src="https://cdn.jsdelivr.net/g/pako@1.0.1(pako.min.js+pako_deflate.min.js+pako_inflate.min.js)"></script>
+  <script src="lib/mustache.js"></script>
+  <script src="lib/byte-buffer.js"></script>
+  <script src="lib/bundle.js"></script>
+  <!-- jQuery 2.2.3 -->
+  <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+  <!-- Bootstrap 3.3.6 -->
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/app.min.js"></script>
+  <script src="https://raw.githubusercontent.com/emn178/js-md5/master/build/md5.min.js"></script>
+  <script>
+    var openFile = function(event) {
+      var input = event.target;
+
+      var reader = new FileReader();
+      reader.onload = function(){
+        PluginManager.addPlugin(reader.result, "amxx");
+      };
+      reader.readAsArrayBuffer(input.files[0]);
+    };
+  </script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+    <header class="main-header">
+      <a href="#" class="logo">
+        <span class="logo-mini"><b>APA</b></span>
+        <span class="logo-lg"><b>Amxx</b>Plugin<b>Analyzer</b></span>
+      </a>
+
+      <nav class="navbar navbar-static-top" role="navigation">
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"><span class="sr-only">Toggle navigation</span></a>
+      </nav>
+    </header>
+    <aside class="main-sidebar">
+      <section class="sidebar">
+        <ul id="menu" class="sidebar-menu">
+          <li class="header">Options</li>
+          <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+          <li><a data-toggle="tab" href="#upload">Upload plugin</a></li>
+          <li class="header">Plugins</li>
+        </ul>
+      </section>
+    </aside>
+
+        <div id="content" class="tab-content">
+          <div id="home" class="tab-pane fade in active">
+            <div class="content-wrapper">
+              <section class="content-header">
+                <h1>Page Header</h1>
+              </section>
+              <section class="content">
+              </section>
+            </div>
+          </div>
+
+          <div id="upload" class="tab-pane fade">
+            <div class="content-wrapper">
+              <section class="content-header">
+                <h1>Upload Plugin</h1>
+              </section>
+              <section class="content">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="box">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">[Step 1] Choose file type</h3>
+                      </div>
+                      <div class="box-body">
+                        <select class="form-control">
+                          <option>Amxmodx plugin</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="box">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">[Step 2] Set name</h3>
+                      </div>
+                      <div class="box-body">
+                        <input id="plugin_name" class="form-control" placeholder="Plugin name" value="Plugin name" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="box">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">[Step 3] Load plugin</h3>
+                      </div>
+                      <div class="box-body">
+                        <input type="file" id="file-upload" onchange='openFile(event)'></input>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+
+    <footer class="main-footer">
+    </footer>
+  </div>
+</body>

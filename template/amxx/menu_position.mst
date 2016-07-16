@@ -1,0 +1,5 @@
+<li>
+  <a data-toggle='tab' href='#{{id}}'>
+    {{name}}
+  </a>
+</li>
