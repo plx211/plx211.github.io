@@ -20,13 +20,13 @@ class @AmxPlugin
     @header.overlays = @data.readUnsignedInt()
 
   @_parseTable: (name, data, start, end, cellSize) ->
-    list = {}
-    list.array = []
-    list.name = name
-    list.dangerCount = {}
-    list.dangerCount.high = 0
-    list.dangerCount.medium = 0
-    list.dangerCount.unknown = 0
+    list =
+      array: []
+      name: name
+      dangerCount:
+        high: 0
+        medium: 0
+        unknown: 0
 
     count = (end - start) / cellSize
 
@@ -44,9 +44,9 @@ class @AmxPlugin
       d.name = name
       d.danger = BlackList.check(name)
       switch d.danger
-        when "high" then list.dangerCount.high++
-        when "medium" then list.dangerCount.medium++
-        when "unknown" then list.dangerCount.unknown++
+        when "High" then list.dangerCount.high++
+        when "Medium" then list.dangerCount.medium++
+        when "Unknown" then list.dangerCount.unknown++
 
     return list
 

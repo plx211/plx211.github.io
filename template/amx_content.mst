@@ -121,7 +121,7 @@
                       <th>Danger Level</th>
                     </tr>
                     {{#array}}
-                      <tr class='{{danger}}'>
+                      <tr class="{{danger}}">
                         <td>{{@index}}</td>
                         <td>{{name}}</td>
                         <td>{{address}}</td>
