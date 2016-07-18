@@ -1,0 +1,141 @@
+<div id='{{id}}' class='tab-pane fade'>
+  <div class='content-wrapper'>
+    <section class='content-header'>
+      <h1>{{name}}</h1>
+    </section>
+    <section class='content'>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="box-title">Plugin info</div>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="callout callout-info">
+                <h4>Plugin Size</h4>
+                <p>{{plugin.data.raw.length}} <small>Byte</small></p>
+              </div>
+              <div class="callout callout-success">
+                <h4>Plugin Hash (MD5)</h4>
+                <p>{{plugin.hash}}</p>
+              </div>
+              <div class="callout callout-warning">
+                <h4>Public Function Count</h4>
+                <p>{{plugin.table.publics.array.length}}</p>
+              </div>
+              <div class="callout callout-danger">
+                <h4>Natives Count</h4>
+                <p>{{plugin.table.natives.array.length}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="box-title">Header</div>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <dl class="dl-horizontal">
+                {{#each plugin.header}}
+                  <dt>{{@key}}</dt><dd>{{this}}</dd>
+                {{/each}}
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="box-title">Extra Option</div>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <button type="button" class="btn btn-block bg-navy btn-flat disabled">Show Hex View (Coming Soon)</button>
+              <button type="button" class="btn btn-block bg-maroon btn-flat disabled">Show Pseudo Asembler (Coming Soon)</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{#each plugin.table}}
+        {{#if array.length}}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="box">
+                <div class="box-header with-border">
+                  <div class="box-title">{{name}} list</div>
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                  <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="small-box bg-aqua">
+                      <div class="inner">
+                        <h3>{{array.length}}</h3>
+                        <p>{{name}} Count</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="small-box bg-green">
+                      <div class="inner">
+                        <h3>{{dangerCount.unknown}}</h3>
+                        <p>Unknown Danger Count</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="small-box bg-yellow">
+                      <div class="inner">
+                        <h3>{{dangerCount.medium}}</h3>
+                        <p>Warning Count</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="small-box bg-red">
+                      <div class="inner">
+                        <h3>{{dangerCount.high}}</h3>
+                        <p>High Danger Count</p>
+                      </div>
+                    </div>
+                  </div>
+                  <table class="table table-bordered table-hover">
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Address</th>
+                      <th>Nameofs</th>
+                      <th>Danger Level</th>
+                    </tr>
+                    {{#array}}
+                      <tr class='{{danger}}'>
+                        <td>{{@index}}</td>
+                        <td>{{name}}</td>
+                        <td>{{address}}</td>
+                        <td>{{nameofs}}</td>
+                        <td>{{danger}}</td>
+                      </tr>
+                    {{/array}}
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/if}}
+      {{/each}}
+    </section>
+  </div>
+</div>

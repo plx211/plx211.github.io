@@ -29,8 +29,16 @@ class @PluginManager
 
   @_addAmxPlugin: (data) ->
 
-  @addPlugin: (data, type) ->
+  @addPlugin: (plugin, type) ->
+    count = ++PluginManager._plugins.count
+    data =
+      name: $("#plugin_name").val()
+      id: "amxx-#{count}"
+      plugin: new AmxxPlugin(plugin)
+
+    view = {}
+
     switch type
-      when "amxx" then PluginManager._addAmxxPlugin(new AmxxPlugin(data))
-      when "amx" then PluginManager._addAmxPlugin(data)
+      when "amxx" then AmxxView.renderPlugin(data.name, data.id, data.plugin)
+      when "amx" then view = new AmxView(data.name, data.id, data.plugin)
       else throw error

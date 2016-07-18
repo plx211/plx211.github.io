@@ -2,35 +2,35 @@ class @BlackList
   @_list: [
     {
       keyword: "SQL_Connect"
-      level: "warning"
+      level: "Medium"
     }
     {
       keyword: "set_user_flags"
-      level: "danger"
+      level: "High"
     }
     {
       keyword: "download"
-      level: "danger"
+      level: "High"
     }
     {
       keyword: "httpdl"
-      level: "danger"
+      level: "High"
     }
     {
       keyword: "client_cmd"
-      level: "warning"
+      level: "Medium"
     }
     {
       keyword: "amx_sql_host"
-      level: "danger"
+      level: "High"
     }
     {
       keyword: "amx_sql_pass"
-      level: "danger"
+      level: "High"
     }
     {
       keyword: "rcon_password"
-      level: "danger"
+      level: "High"
     }
   ]
 
@@ -38,4 +38,4 @@ class @BlackList
     for d, i in BlackList._list
       if d.keyword == keyword
         return d.level
-    "unknown"
+    "Unknown"

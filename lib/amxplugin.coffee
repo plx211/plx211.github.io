@@ -19,12 +19,15 @@ class @AmxPlugin
     @header.nametable = @data.readUnsignedInt()
     @header.overlays = @data.readUnsignedInt()
 
-  @_parseTable: (data, start, end, cellSize) ->
+  @_parseTable: (name, data, start, end, cellSize) ->
     list = {}
     list.array = []
-    list.dangerCount = 0
-    list.warningCount = 0
-    list.unknownCount = 0
+    list.name = name
+    list.dangerCount = {}
+    list.dangerCount.high = 0
+    list.dangerCount.medium = 0
+    list.dangerCount.unknown = 0
+
     count = (end - start) / cellSize
 
     data.index = start
@@ -35,25 +38,26 @@ class @AmxPlugin
         nameofs: data.readUnsignedInt()
       list.array.push(record)
 
-    for i in [0...count]
-      data.index = list.array[i].nameofs
+    for d, i in list.array
+      data.index = d.nameofs
       name = data.readCString()
-      list.array[i].name = name
-      list.array[i].danger = BlackList.check(name)
-      switch list.array[i].danger
-        when "danger" then list.dangerCount++
-        when "warning" then list.warningCount++
-        when "unknown" then list.unknownCount++
+      d.name = name
+      d.danger = BlackList.check(name)
+      switch d.danger
+        when "high" then list.dangerCount.high++
+        when "medium" then list.dangerCount.medium++
+        when "unknown" then list.dangerCount.unknown++
 
-    list
+    return list
 
   constructor: (data) ->
     @data = new ByteBuffer(data, ByteBuffer.LITTLE_ENDIAN)
+    @hash = md5(data)
     @header = {}
     @_parseHeader()
     @table =
-      publics: AmxPlugin._parseTable(@data, @header.publics, @header.natives, @header.defsize)
-      natives: AmxPlugin._parseTable(@data, @header.natives, @header.libraries, @header.defsize)
-      libraries: AmxPlugin._parseTable(@data, @header.libraries, @header.pubvars, @header.defsize)
-      pubvars: AmxPlugin._parseTable(@data, @header.pubvars, @header.tags, @header.defsize)
-      tags: AmxPlugin._parseTable(@data, @header.tags, @header.nametable, @header.defsize)
+      publics: AmxPlugin._parseTable("Publics function", @data, @header.publics, @header.natives, @header.defsize)
+      natives: AmxPlugin._parseTable("Natives", @data, @header.natives, @header.libraries, @header.defsize)
+      libraries: AmxPlugin._parseTable("Libraries", @data, @header.libraries, @header.pubvars, @header.defsize)
+      pubvars: AmxPlugin._parseTable("Pubvars", @data, @header.pubvars, @header.tags, @header.defsize)
+      tags: AmxPlugin._parseTable("Tags", @data, @header.tags, @header.nametable, @header.defsize)
